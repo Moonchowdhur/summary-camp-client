@@ -230,3 +230,5 @@ export default Register;
 // mima@gmail.com
 
 // [#40128B]
+// disabled={role === "admin" || "instructor"}
+// disabled:cursor-not-allowed
