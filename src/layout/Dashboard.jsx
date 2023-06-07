@@ -3,13 +3,14 @@ import { Outlet, NavLink } from "react-router-dom";
 import Navbar from "../pages/Navbar/Navbar";
 import { FaGuitar, FaUsers } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
+import Footer from "../pages/Footer/Footer";
 const Dashboard = () => {
   const isAdmin = true;
 
   return (
     <div>
       <Navbar></Navbar>
-      <div className="drawer lg:drawer-open">
+      <div className="drawer pb-16 lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
           {/* Page content here */}
@@ -52,7 +53,7 @@ const Dashboard = () => {
                     }
                   >
                     <FaUsers />
-                    All users
+                    Manage Users
                   </NavLink>
                 </li>
                 <li className="text-black text-xl font-medium">
@@ -96,7 +97,7 @@ const Dashboard = () => {
           </ul>
         </div>
       </div>
-      ;
+      <Footer></Footer>
     </div>
   );
 };
