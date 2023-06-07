@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#898121] flex items-center justify-between font-medium  h-[70px] p-4 md:px-12  text-white">
+    <div className="bg-[#40128B] flex items-center justify-between font-medium  h-[70px] p-4 md:px-12  text-white">
       <div className="flex items-center gap-3">
         <img
           src="https://images.unsplash.com/photo-1550291652-6ea9114a47b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"

@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import Navbar from "../pages/Navbar/Navbar";
 import { FaGuitar, FaUsers } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import Footer from "../pages/Footer/Footer";
+import { Authcontext } from "../provider/Authprovider";
 const Dashboard = () => {
   const isAdmin = true;
+  const role = "admin";
+  // const { user } = useContext(Authcontext);
 
   return (
     <div>
@@ -30,8 +33,50 @@ const Dashboard = () => {
               <br></br>
               <span className="font-bold tracking-widest"> Academy</span>
             </p>
-            {/* Sidebar content here */}
-            {isAdmin ? (
+            {role === "admin" ? (
+              <>
+                <li className="text-black font-medium text-xl mt-5 ">
+                  <NavLink
+                    to="/dashboard/manageitems"
+                    className={({ isActive, isPending }) =>
+                      isActive ? "text-white" : ""
+                    }
+                  >
+                    <FaGuitar />
+                    Manage Class
+                  </NavLink>
+                </li>
+
+                <li className="text-black text-xl font-medium ">
+                  <NavLink
+                    to="/dashboard/allusers"
+                    className={({ isActive, isPending }) =>
+                      isActive ? "text-violet-500" : ""
+                    }
+                  >
+                    <FaUsers />
+                    Manage Users
+                  </NavLink>
+                </li>
+                <li className="text-black text-xl font-medium">
+                  <NavLink
+                    to="/"
+                    className={({ isActive, isPending }) =>
+                      isActive ? "text-white" : ""
+                    }
+                  >
+                    <AiFillHome />
+                    Home
+                  </NavLink>
+                </li>
+              </>
+            ) : role === "instructor" ? (
+              <div>instructor</div>
+            ) : (
+              <div>student</div>
+            )}
+
+            {/* {role === "admin" ? (
               <>
                 <li className="text-black font-medium text-xl mt-5 ">
                   <NavLink
@@ -93,7 +138,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
               </>
-            )}
+            )} */}
           </ul>
         </div>
       </div>
