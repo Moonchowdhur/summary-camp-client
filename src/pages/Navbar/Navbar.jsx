@@ -3,7 +3,16 @@ import { NavLink } from "react-router-dom";
 import { Authcontext } from "../../provider/Authprovider";
 
 const Navbar = () => {
-  const { user } = useContext(Authcontext);
+  const { user, logOut } = useContext(Authcontext);
+  const logoutBtn = () => {
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   return (
     <div className="bg-[#898121] flex items-center justify-between font-medium  h-[70px] p-4 md:px-12  text-white">
@@ -60,7 +69,7 @@ const Navbar = () => {
                 className="w-10 h-10 rounded-full"
                 alt=""
               />
-              <button>Logout</button>
+              <button onClick={logoutBtn}>Logout</button>
             </div>
           ) : (
             <li className="text-2xl">
