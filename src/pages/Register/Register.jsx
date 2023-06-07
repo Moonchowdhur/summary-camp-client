@@ -199,3 +199,6 @@ const Register = () => {
 };
 
 export default Register;
+
+// password --FGG$%w
+// email-rosa@gmail.com

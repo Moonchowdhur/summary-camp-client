@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { Authcontext } from "../../provider/Authprovider";
 
 const Navbar = () => {
+  const { user } = useContext(Authcontext);
+
   return (
     <div className="bg-[#898121] flex items-center justify-between font-medium  h-[70px] p-4 md:px-12  text-white">
       <div className="flex items-center gap-3">
@@ -50,6 +53,28 @@ const Navbar = () => {
               {/* other code */}
             </NavLink>
           </li>
+          {user ? (
+            <div className="flex items-center text-xl gap-3">
+              <img
+                src={user?.photoURL}
+                className="w-10 h-10 rounded-full"
+                alt=""
+              />
+              <button>Logout</button>
+            </div>
+          ) : (
+            <li className="text-2xl">
+              <NavLink
+                to="/login"
+                className={({ isActive, isPending }) =>
+                  isActive ? " text-[#F7C04A]" : ""
+                }
+              >
+                Login
+                {/* other code */}
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
     </div>
