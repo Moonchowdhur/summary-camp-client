@@ -62,7 +62,26 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        swal("Google Login is successfull", "", "success");
+        // user post
+        const dataUser = {
+          name: user?.displayName,
+          email: user?.email,
+          role: "student",
+        };
+        console.log(dataUser);
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            swal("Google Login is successfull", "", "success");
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => {
         const errorMessage = error.message;

@@ -51,7 +51,7 @@ const Navbar = () => {
               {/* other code */}
             </NavLink>
           </li>
-          <li className="text-2xl">
+          <li className="text-xl">
             <NavLink
               to="/classes"
               className={({ isActive, isPending }) =>
@@ -64,6 +64,17 @@ const Navbar = () => {
           </li>
           {user ? (
             <div className="flex items-center text-xl gap-3">
+              <li className="text-xl">
+                <NavLink
+                  to="/dashboard/allusers"
+                  className={({ isActive, isPending }) =>
+                    isActive ? " text-[#F7C04A]" : ""
+                  }
+                >
+                  Dashboard
+                  {/* other code */}
+                </NavLink>
+              </li>
               <img
                 src={user?.photoURL}
                 className="w-10 h-10 rounded-full"

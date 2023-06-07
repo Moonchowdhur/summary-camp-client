@@ -6,8 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 import { Link } from "react-router-dom";
-import { sendEmailVerification, updateProfile } from "firebase/auth";
 import swal from "sweetalert";
+
+import { sendEmailVerification, updateProfile } from "firebase/auth";
+
 import { Authcontext } from "../../provider/Authprovider";
 
 const Register = () => {
@@ -54,7 +56,28 @@ const Register = () => {
           photoURL: photo,
         })
           .then(() => {
-            //
+            //post user
+            const dataUser = {
+              name: user?.displayName,
+              email: user?.email,
+              role: "student",
+            };
+            console.log(dataUser);
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(dataUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+                if (data.insertedId) {
+                  swal("User Created!", "Wow!", "success");
+                  navigate("/");
+                }
+              });
           })
           .catch((error) => {
             const errorMessage = error.message;
@@ -202,3 +225,8 @@ export default Register;
 
 // password --FGG$%w
 // email-rosa@gmail.com
+
+// FGG$%p
+// mima@gmail.com
+
+// [#40128B]
