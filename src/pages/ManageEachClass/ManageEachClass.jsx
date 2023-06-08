@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { MdEventSeat } from "react-icons/md";
 import { AiFillDollarCircle } from "react-icons/ai";
-const ManageEachClass = ({ eachClass }) => {
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+const ManageEachClass = ({ eachClass, refetch }) => {
   const [sta, setSta] = useState("pending");
   const [isDisabled, setIsDisabled] = useState(false);
+  const [axiosSecure] = useAxiosSecure();
 
   const {
     image,
@@ -16,31 +18,64 @@ const ManageEachClass = ({ eachClass }) => {
     status,
   } = eachClass;
 
-  const handleApproveBtn = (id) => {
-    console.log(id);
-    setSta("approved");
-    setIsDisabled(true);
-  };
-
   // const handleApproveBtn = (id) => {
-  //   fetch(`http://localhost:5000/users/approved/${user._id}`, {
-  //     method: "PATCH",
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       if (data.modifiedCount > 0) {
-  //         refetch();
-  //         setSta("approved");
-  //         setIsDisabled(true);
-  //         swal("Class is approved now");
-  //       }
-  //     });
+  //   console.log(id);
+  //   setSta("approved");
+  //   setIsDisabled(true);
   // };
 
+  const handleApproveBtn = (id) => {
+    fetch(`http://localhost:5000/class-approved/${id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          refetch();
+          setSta("approved");
+          setIsDisabled(true);
+          swal("Class is approved now");
+        }
+      });
+  };
+
   const handleDenyBtn = (id) => {
-    setSta("denied");
-    setIsDisabled(true);
+    fetch(`http://localhost:5000/class-denied/${id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          refetch();
+          setSta("denied");
+          setIsDisabled(true);
+          swal("Class is denied now");
+        }
+      });
+  };
+
+  const handleFeedbackBtn = (id) => {
+    console.log(id);
+    swal("Write Feedback here:", {
+      content: "input",
+    }).then((result) => {
+      swal(`Feedback: ${result}`);
+      const feedback = result;
+      console.log({ feedback });
+      axiosSecure
+        .patch(`/classes/add-feedback/${id}`, { feedback })
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.modifiedCount > 0) {
+            swal({
+              title: "Feedback Updated",
+              icon: "success",
+            });
+          }
+        });
+    });
   };
 
   return (
@@ -75,27 +110,29 @@ const ManageEachClass = ({ eachClass }) => {
               Price: ${price}
             </p>
           </div>
-          <div className=" flex gap-3 items-center">
-            <p className="rounded-lg my-5 text-base bg-violet-600 px-3 py-2 text-white font-bold">
-              Status: {sta}
+          <div className=" flex gap-2 items-center">
+            <p className="rounded-lg my-5 text-sm bg-violet-600 px-3 py-2 text-white font-bold">
+              Status: {status}
             </p>
             <button
               onClick={() => handleApproveBtn(_id)}
-              disabled={isDisabled}
-              className={`rounded-lg my-5 text-base bg-orange-600 px-3 py-2 text-white font-bold ${
-                isDisabled ? "bg-slate-300 text-black border" : ""
-              }`}
+              disabled={status === "pending" ? false : true}
+              className={`btn rounded-lg my-5 text-sm bg-orange-600 px-3 py-2 text-white font-bold `}
             >
               Approved
             </button>
             <button
               onClick={() => handleDenyBtn(_id)}
-              disabled={isDisabled}
-              className={`rounded-lg my-5 text-base bg-orange-600 px-3 py-2 text-white font-bold ${
-                isDisabled ? "bg-slate-300 text-black border" : ""
-              }`}
+              disabled={status === "pending" ? false : true}
+              className={`btn rounded-lg my-5 text-sm bg-orange-600 px-3 py-2 text-white font-bold`}
             >
               Denied
+            </button>
+            <button
+              onClick={() => handleFeedbackBtn(_id)}
+              className={`btn rounded-lg my-5 text-sm bg-orange-600 px-3 py-2 text-white font-bold`}
+            >
+              Feedback
             </button>
           </div>
         </div>

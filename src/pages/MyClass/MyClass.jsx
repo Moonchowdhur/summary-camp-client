@@ -63,9 +63,15 @@ const MyClass = () => {
                   </td>
                   <td>{sclass?.instructorEmail}</td>
                   <td> {sclass?.name}</td>
-                  <td>Feedback</td>
+                  <td>
+                    {sclass?.status == "denied"
+                      ? sclass?.feedback
+                      : "No feedback"}
+                  </td>
                   <td>${sclass?.price}</td>
-                  <td>{sclass?.status}</td>
+                  <td className="bg-orange-400 btn btn-sm font-bold">
+                    {sclass?.status}
+                  </td>
                   <td>0</td>
                   <th className="flex gap-4  items-center">
                     <Link

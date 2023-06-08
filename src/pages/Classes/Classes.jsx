@@ -11,11 +11,13 @@ const Classes = () => {
       return res.json();
     },
   });
-  //   console.log(allClass);
+
+  const approvedClass = allClass.filter((c) => c.status === "approved");
+  console.log(approvedClass);
 
   return (
     <div className="md:mx-12 gap-5 p-4 grid grid-cols-1 md:grid-cols-2">
-      {allClass.map((c) => (
+      {approvedClass.map((c) => (
         <EachAllClasses c={c} key={c._id}></EachAllClasses>
       ))}
     </div>

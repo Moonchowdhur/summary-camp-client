@@ -17,6 +17,7 @@ const ManageClass = () => {
     <div className="md:mx-12 gap-5 p-4 grid grid-cols-1 md:grid-cols-2">
       {allClass.map((eachClass) => (
         <ManageEachClass
+          refetch={refetch}
           key={eachClass._id}
           eachClass={eachClass}
         ></ManageEachClass>
