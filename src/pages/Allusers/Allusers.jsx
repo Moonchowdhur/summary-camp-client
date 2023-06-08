@@ -61,7 +61,7 @@ const Allusers = () => {
   };
 
   return (
-    <div className="w-full max-h-screen">
+    <div className="w-full ">
       <h2 className="text-3xl font-medium text-center">
         All users Here:{users.length}
       </h2>

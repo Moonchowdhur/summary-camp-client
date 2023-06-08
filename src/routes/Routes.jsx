@@ -8,6 +8,8 @@ import Dashboard from "../layout/Dashboard";
 import Allusers from "../pages/Allusers/Allusers";
 import Error from "../pages/Error/Error";
 import Instructor from "../pages/Instructor/Instructor";
+import AddClass from "../pages/AddClass/AddClass";
+import MyClass from "../pages/MyClass/MyClass";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,7 @@ const router = createBrowserRouter([
         path: "/instructors",
         element: <Instructor></Instructor>,
       },
+
       {
         path: "/login",
         element: <Login></Login>,
@@ -42,6 +45,14 @@ const router = createBrowserRouter([
       {
         path: "allusers",
         element: <Allusers></Allusers>,
+      },
+      {
+        path: "addclass",
+        element: <AddClass></AddClass>,
+      },
+      {
+        path: "myclass",
+        element: <MyClass></MyClass>,
       },
     ],
   },

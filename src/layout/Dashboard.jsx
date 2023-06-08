@@ -7,7 +7,7 @@ import Footer from "../pages/Footer/Footer";
 import { Authcontext } from "../provider/Authprovider";
 const Dashboard = () => {
   const isAdmin = true;
-  const role = "admin";
+  const role = "instructor";
   // const { user } = useContext(Authcontext);
 
   return (
@@ -71,7 +71,42 @@ const Dashboard = () => {
                 </li>
               </>
             ) : role === "instructor" ? (
-              <div>instructor</div>
+              <div>
+                <li className="text-black font-medium text-xl mt-5 ">
+                  <NavLink
+                    to="/dashboard/addclass"
+                    className={({ isActive, isPending }) =>
+                      isActive ? "text-white" : ""
+                    }
+                  >
+                    <FaGuitar />
+                    Add Class
+                  </NavLink>
+                </li>
+
+                <li className="text-black text-xl font-medium ">
+                  <NavLink
+                    to="/dashboard/myclass"
+                    className={({ isActive, isPending }) =>
+                      isActive ? "text-violet-500" : ""
+                    }
+                  >
+                    <FaUsers />
+                    My Classes
+                  </NavLink>
+                </li>
+                <li className="text-black text-xl font-medium ">
+                  <NavLink
+                    to="/"
+                    className={({ isActive, isPending }) =>
+                      isActive ? "text-violet-500" : ""
+                    }
+                  >
+                    <AiFillHome />
+                    Home
+                  </NavLink>
+                </li>
+              </div>
             ) : (
               <div>student</div>
             )}

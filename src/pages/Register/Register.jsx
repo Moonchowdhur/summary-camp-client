@@ -58,6 +58,7 @@ const Register = () => {
           .then(() => {
             //post user
             const dataUser = {
+              image: user?.photoURL,
               name: user?.displayName,
               email: user?.email,
               role: "student",
