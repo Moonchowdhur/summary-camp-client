@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { FaUser } from "react-icons/fa";
-
+import { FcGoogle } from "react-icons/fc";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 import { sendEmailVerification, updateProfile } from "firebase/auth";
@@ -13,11 +13,15 @@ import { sendEmailVerification, updateProfile } from "firebase/auth";
 import { Authcontext } from "../../provider/Authprovider";
 
 const Register = () => {
-  const { createUser } = useContext(Authcontext);
+  const { createUser, googleSignIn } = useContext(Authcontext);
   const [accepted, setAccepted] = useState(false);
   const [eye, setEye] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const location = useLocation();
+  let navigate = useNavigate();
+
+  let from = location.state?.from?.pathname || "/";
 
   const handleRegisterbtn = (event) => {
     event.preventDefault();
@@ -92,6 +96,39 @@ const Register = () => {
         setSuccess("");
       });
   };
+
+  //google signIn
+  const googleSign = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        // user post
+        const dataUser = {
+          name: user?.displayName,
+          email: user?.email,
+          role: "student",
+        };
+        console.log(dataUser);
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            swal("Google Login is successfull", "", "success");
+            navigate(from, { replace: true });
+          });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+      });
+  };
+  //end
 
   return (
     <div className="flex justify-center my-7">
@@ -216,7 +253,23 @@ const Register = () => {
             </span>
           </small>
         </button>
+
+        {/* google login */}
+        <div className="relative py-2">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-b border-gray-300"></div>
+          </div>
+          <div className="relative flex justify-center">
+            <span className="bg-white px-4 text-sm text-gray-500">Or</span>
+          </div>
+        </div>
+        <div className="text-3xl flex items-center justify-center mt-4 gap-5">
+          <button onClick={googleSign}>
+            <FcGoogle />
+          </button>
+        </div>
       </div>
+
       <ToastContainer />
     </div>
   );
