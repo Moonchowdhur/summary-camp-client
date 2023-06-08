@@ -49,7 +49,7 @@ const AddClass = () => {
           console.log(res.data);
           if (res.data.insertedId) {
             swal({
-              title: "Item inserted",
+              title: "Class Added",
               icon: "success",
             });
           }
@@ -154,7 +154,7 @@ const AddClass = () => {
         {/* part end */}
         <input
           type="submit"
-          className="btn bg-[#40128B] text-white btn-block my-4 "
+          className="btn bg-[#40128B] font-bold hover:bg-yellow-500 hover:text-black text-white btn-block my-4 "
           value="Add Class"
         />
       </div>
