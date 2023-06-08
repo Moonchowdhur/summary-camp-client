@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdEventSeat } from "react-icons/md";
+import { Authcontext } from "../../provider/Authprovider";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const EachAllClasses = ({ c }) => {
+  const { user } = useContext(Authcontext);
+  const navigate = useNavigate();
+  const [axiosSecure] = useAxiosSecure();
   const {
     image,
     _id,
@@ -13,11 +20,36 @@ const EachAllClasses = ({ c }) => {
     status,
   } = c;
 
-  const selectClassBtn = (id) => {
-    console.log(id);
+  const selectClassBtn = (userdata) => {
+    console.log(userdata);
+    // if (!user) {
+    //   swal("Plase Login!", "", "Error");
+    //   navigate("/login");
+    // }
+    const selectedData = {
+      image,
+      studentName: user?.displayName,
+      selectedClassId: _id,
+      instructorEmail,
+      instructorName,
+      name,
+      price,
+      seats,
+      status,
+    };
+    console.log(selectedData);
+    axiosSecure.post("/selectedclass", selectedData).then((res) => {
+      console.log(res.data);
+      if (res.data.insertedId) {
+        swal({
+          title: "Class Selected",
+          icon: "success",
+        });
+      }
+    });
   };
 
-  console.log(c);
+  //   console.log(c);
   return (
     <div className="shadow-lg relative p-4 shadow-slate-100 border-2 border-violet-600 rounded-lg">
       <div>
@@ -43,7 +75,7 @@ const EachAllClasses = ({ c }) => {
               Available seats: {seats}
             </p>
             <button
-              onClick={() => selectClassBtn(_id)}
+              onClick={() => selectClassBtn(c)}
               className="rounded-lg text-xl bg-violet-600 px-3 py-2 text-white font-bold"
             >
               Select
