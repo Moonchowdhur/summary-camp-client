@@ -5,9 +5,11 @@ import { FaGuitar, FaUsers } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import Footer from "../pages/Footer/Footer";
 import { Authcontext } from "../provider/Authprovider";
+import { GiViolin } from "react-icons/gi";
+import { MdPayments } from "react-icons/md";
 const Dashboard = () => {
   const isAdmin = true;
-  const role = "instructor";
+  const role = "student";
   // const { user } = useContext(Authcontext);
 
   return (
@@ -108,7 +110,31 @@ const Dashboard = () => {
                 </li>
               </div>
             ) : (
-              <div>student</div>
+              <div>
+                {" "}
+                <li className="text-black font-medium text-xl mt-5 ">
+                  <NavLink
+                    to="/dashboard/selectedclass"
+                    className={({ isActive, isPending }) =>
+                      isActive ? "text-white" : ""
+                    }
+                  >
+                    <GiViolin />
+                    My Selected Classes
+                  </NavLink>
+                </li>
+                <li className="text-black font-medium text-xl mt-5 ">
+                  <NavLink
+                    to="/dashboard/enrolledclass"
+                    className={({ isActive, isPending }) =>
+                      isActive ? "text-white" : ""
+                    }
+                  >
+                    <MdPayments />
+                    My Enrolled Classes
+                  </NavLink>
+                </li>
+              </div>
             )}
 
             {/* {role === "admin" ? (

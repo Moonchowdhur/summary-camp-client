@@ -29,6 +29,7 @@ const EachAllClasses = ({ c }) => {
     const selectedData = {
       image,
       studentName: user?.displayName,
+      studentEmail: user?.email,
       selectedClassId: _id,
       instructorEmail,
       instructorName,

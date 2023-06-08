@@ -45,6 +45,7 @@ const Allusers = () => {
       });
   };
 
+  // console.log(user?.role);
   const handleInstBtn = (user) => {
     console.log(user._id);
     fetch(`http://localhost:5000/users/instructor/${user._id}`, {
@@ -89,12 +90,15 @@ const Allusers = () => {
                   <td>{user?.role}</td>
                   <th className="flex items-center gap-3">
                     {user?.role === "instructor" ? (
-                      <div className=" text-base  border-2 rounded-xl border-violet-600 px-3 py-2 ">
+                      <button
+                        disabled={user?.role === "admin" || "instructor"}
+                        className=" text-base  border-2 rounded-xl border-violet-600 px-3 py-2 "
+                      >
                         <h2>Instructor</h2>
-                      </div>
+                      </button>
                     ) : (
                       <button
-                        // disabled={user?.role === "admin" || "instructor"}
+                        disabled={user?.role === "admin" || "instructor"}
                         onClick={() => handleInstBtn(user)}
                         className={`bg-orange-300 py-2 text-base px-2 rounded-lg text-white disable:cursor-not-allowed cursor-pointer `}
                       >
@@ -102,12 +106,15 @@ const Allusers = () => {
                       </button>
                     )}
                     {user?.role === "admin" ? (
-                      <div className=" text-base border-2 rounded-xl border-violet-600 px-3 py-2 ">
+                      <button
+                        disabled={user?.role === "admin" || "instructor"}
+                        className=" text-base border-2 rounded-xl border-violet-600 px-3 py-2 "
+                      >
                         <h2>Admin</h2>
-                      </div>
+                      </button>
                     ) : (
                       <button
-                        // disabled={user?.role === "admin" || "instructor"}
+                        disabled={user?.role === "admin" || "instructor"}
                         onClick={() => handleAdminBtn(user)}
                         className="bg-[#40128B] py-2 text-base px-2 rounded-lg text-white  "
                       >
