@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { Authcontext } from "../../provider/Authprovider";
-
+import swal from "sweetalert";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
 const AddClass = () => {
   const { user } = useContext(Authcontext);
+  const [axiosSecure] = useAxiosSecure();
 
   const handleAddClass = (event) => {
     event.preventDefault();
@@ -23,6 +25,37 @@ const AddClass = () => {
       status: "pending",
     };
     console.log(itemData);
+    // image upload
+    const formData = new FormData();
+    formData.append("image", img);
+    fetch(img_hosting_url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgResponse) => {
+        // console.log(imgResponse);
+        const image = imgResponse.data.display_url;
+        const itemData = {
+          name,
+          instructorName: user?.displayName,
+          instructorEmail: user?.email,
+          price: parseFloat(price),
+          seats: parseFloat(seats),
+          status: "pending",
+          image,
+        };
+        axiosSecure.post("/classes", itemData).then((res) => {
+          console.log(res.data);
+          if (res.data.insertedId) {
+            swal({
+              title: "Item inserted",
+              icon: "success",
+            });
+          }
+        });
+      });
+    //end
   };
 
   return (
