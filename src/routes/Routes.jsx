@@ -13,6 +13,8 @@ import MyClass from "../pages/MyClass/MyClass";
 import Classes from "../pages/Classes/Classes";
 import MySelectedClasses from "../pages/MySelectedClasses/MySelectedClasses";
 import MyEnrolledClasses from "../pages/MyEnrolledClasses/MyEnrolledClasses";
+import UpdateClass from "../pages/UpdateClass/UpdateClass";
+import ManageClass from "../pages/ManageClass/ManageClass";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      // {
+      //   path: "update/:id",
+      //   element: <UpdateClass></UpdateClass>,
+      // },
     ],
   },
   {
@@ -51,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "allusers",
         element: <Allusers></Allusers>,
+      },
+      {
+        path: "manageclass",
+        element: <ManageClass></ManageClass>,
       },
       {
         path: "addclass",
@@ -67,6 +77,12 @@ const router = createBrowserRouter([
       {
         path: "enrolledclass",
         element: <MyEnrolledClasses></MyEnrolledClasses>,
+      },
+      {
+        path: "update/:id",
+        element: <UpdateClass></UpdateClass>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/classes/${params.id}`),
       },
     ],
   },

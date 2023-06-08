@@ -14,6 +14,7 @@ const useUser = () => {
       return res.data;
     },
   });
+  return [isUser, refetch];
 };
 
 export default useUser;

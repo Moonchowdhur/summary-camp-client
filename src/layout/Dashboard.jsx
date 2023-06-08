@@ -7,10 +7,14 @@ import Footer from "../pages/Footer/Footer";
 import { Authcontext } from "../provider/Authprovider";
 import { GiViolin } from "react-icons/gi";
 import { MdPayments } from "react-icons/md";
+import useUser from "../hooks/useUser";
 const Dashboard = () => {
   const isAdmin = true;
-  const role = "student";
+  const role = "admin";
   // const { user } = useContext(Authcontext);
+
+  const [isUser] = useUser();
+  console.log(isUser);
 
   return (
     <div>
@@ -35,11 +39,11 @@ const Dashboard = () => {
               <br></br>
               <span className="font-bold tracking-widest"> Academy</span>
             </p>
-            {role === "admin" ? (
+            {isUser?.role === "admin" ? (
               <>
                 <li className="text-black font-medium text-xl mt-5 ">
                   <NavLink
-                    to="/dashboard/manageitems"
+                    to="/dashboard/manageclass"
                     className={({ isActive, isPending }) =>
                       isActive ? "text-white" : ""
                     }
@@ -72,7 +76,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
               </>
-            ) : role === "instructor" ? (
+            ) : isUser?.role === "instructor" ? (
               <div>
                 <li className="text-black font-medium text-xl mt-5 ">
                   <NavLink

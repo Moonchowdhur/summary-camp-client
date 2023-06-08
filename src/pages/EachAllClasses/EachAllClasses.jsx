@@ -25,6 +25,7 @@ const EachAllClasses = ({ c }) => {
     // if (!user) {
     //   swal("Plase Login!", "", "Error");
     //   navigate("/login");
+    //   return
     // }
     const selectedData = {
       image,

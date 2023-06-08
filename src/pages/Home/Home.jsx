@@ -1,6 +1,7 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import PopularInstrcutor from "../PopularInstrcutor/PopularInstrcutor";
 const Home = () => {
   return (
     <div className="md:mx-12 p-4">
@@ -9,11 +10,13 @@ const Home = () => {
         <Carousel>
           <div className="">
             <img src="https://images.unsplash.com/photo-1543062094-d22540cadf2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" />
-            <p className="legend -mt-9 text-2xl">
-              It's easy to play any musical instrument, all you have to do is
-              touch the right key at the right time and the instrument will play
-              itself.
-            </p>
+            <div className="flex justify-center ">
+              <p className="legend -mt-9 text-2xl">
+                It's easy to play any musical instrument, all you have to do is
+                touch the right key at the right time and the instrument will
+                play itself.
+              </p>
+            </div>
           </div>
           <div>
             <img src="https://images.unsplash.com/photo-1628199699161-88d65311fd28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" />
@@ -33,7 +36,7 @@ const Home = () => {
         </Carousel>
       </div>
       {/* slider end */}
-      <div className="text-center my-12 text-4xl font-bold tracking-wider">
+      <div className="text-center my-16 text-4xl font-bold tracking-wider">
         <h2 className="mb-5">Instrument Section</h2>
         <div className="grid md:mx-8 grid-cols-1 gap-3 mx-auto mt-5 md:grid-cols-3">
           <img
@@ -69,6 +72,12 @@ const Home = () => {
             alt=""
           />
         </div>
+      </div>
+      <div className="my-16">
+        <h2 className="mb-5 text-center my-12 text-4xl font-bold tracking-wider">
+          Popular Instrcutor
+        </h2>
+        <PopularInstrcutor></PopularInstrcutor>
       </div>
     </div>
   );
