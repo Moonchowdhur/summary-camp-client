@@ -2,13 +2,18 @@ import React, { useContext } from "react";
 import { MdEventSeat } from "react-icons/md";
 import { Authcontext } from "../../provider/Authprovider";
 import swal from "sweetalert";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useUser from "../../hooks/useUser";
 
 const EachAllClasses = ({ c }) => {
   const { user } = useContext(Authcontext);
+  const location = useLocation();
   const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
+  const [isUser] = useUser();
+  console.log(isUser);
+
   const {
     image,
     _id,
@@ -22,33 +27,33 @@ const EachAllClasses = ({ c }) => {
 
   const selectClassBtn = (userdata) => {
     console.log(userdata);
-    // if (!user) {
-    //   swal("Plase Login!", "", "Error");
-    //   navigate("/login");
-    //   return
-    // }
-    const selectedData = {
-      image,
-      studentName: user?.displayName,
-      studentEmail: user?.email,
-      selectedClassId: _id,
-      instructorEmail,
-      instructorName,
-      name,
-      price,
-      seats,
-      status,
-    };
-    console.log(selectedData);
-    axiosSecure.post("/selectedclass", selectedData).then((res) => {
-      console.log(res.data);
-      if (res.data.insertedId) {
-        swal({
-          title: "Class Selected",
-          icon: "success",
-        });
-      }
-    });
+    if (user && user?.email) {
+      const selectedData = {
+        image,
+        studentName: user?.displayName,
+        studentEmail: user?.email,
+        selectedClassId: _id,
+        instructorEmail,
+        instructorName,
+        name,
+        price,
+        seats,
+        status,
+      };
+
+      axiosSecure.post("/selectedclass", selectedData).then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          swal({
+            title: "Class Selected",
+            icon: "success",
+          });
+        }
+      });
+    } else {
+      swal("Plase Login!", "Go to login page", "Error");
+      navigate("/login", { state: { from: location } });
+    }
   };
 
   //   console.log(c);
@@ -78,7 +83,12 @@ const EachAllClasses = ({ c }) => {
             </p>
             <button
               onClick={() => selectClassBtn(c)}
-              className="rounded-lg text-xl bg-violet-600 px-3 py-2 text-white font-bold"
+              disabled={
+                isUser?.role === "instructor" || isUser?.role === "admin"
+                  ? true
+                  : false
+              }
+              className="rounded-lg btn text-base bg-violet-600 px-3 py-2 text-white font-bold"
             >
               Select
             </button>
@@ -90,3 +100,26 @@ const EachAllClasses = ({ c }) => {
 };
 
 export default EachAllClasses;
+
+// const selectedData = {
+//   image,
+//   studentName: user?.displayName,
+//   studentEmail: user?.email,
+//   selectedClassId: _id,
+//   instructorEmail,
+//   instructorName,
+//   name,
+//   price,
+//   seats,
+//   status,
+// };
+
+// axiosSecure.post("/selectedclass", selectedData).then((res) => {
+//   console.log(res.data);
+//   if (res.data.insertedId) {
+//     swal({
+//       title: "Class Selected",
+//       icon: "success",
+//     });
+//   }
+// });

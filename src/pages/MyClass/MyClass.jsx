@@ -27,7 +27,7 @@ const MyClass = () => {
     <div>
       <div className=" my-8">
         <h2 className="text-center font-bold text-2xl ">
-          Total Selected class: {instructorClass.length}
+          Total class: {instructorClass.length}
         </h2>
       </div>
       <div className="w-full my-5 ">

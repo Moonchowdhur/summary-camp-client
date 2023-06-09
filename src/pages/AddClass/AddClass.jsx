@@ -73,6 +73,7 @@ const AddClass = () => {
             <input
               type="text"
               name="name"
+              required
               placeholder="name"
               className="input input-bordered w-full "
             />
@@ -85,6 +86,7 @@ const AddClass = () => {
             </label>
             <input
               name="img"
+              required
               type="file"
               className="file-input file-input-bordered w-full max-w-xs"
             />
@@ -134,6 +136,7 @@ const AddClass = () => {
             </label>
             <input
               type="text"
+              required
               name="seats"
               placeholder="Enter Available Seats"
               className="input input-bordered w-full "
@@ -146,6 +149,7 @@ const AddClass = () => {
             <input
               type="text"
               name="price"
+              required
               placeholder="Enter Price"
               className="input input-bordered w-full "
             />

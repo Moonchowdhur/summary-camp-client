@@ -3,10 +3,15 @@ import { NavLink } from "react-router-dom";
 import { Authcontext } from "../../provider/Authprovider";
 import { FaHamburger } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
+import useUser from "../../hooks/useUser";
 
 const Navbar = () => {
   const { user, logOut } = useContext(Authcontext);
   const [open, setOpen] = useState(false);
+
+  const [isUser] = useUser();
+  // console.log(isUser);
+
   const logoutBtn = () => {
     logOut()
       .then(() => {

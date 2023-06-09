@@ -2,11 +2,12 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import PopularInstrcutor from "../PopularInstrcutor/PopularInstrcutor";
+import Banner from "../Banner/Banner";
 const Home = () => {
   return (
     <div className="md:mx-12 p-4">
       {/* slider */}
-      <div className="">
+      {/* <div className="">
         <Carousel>
           <div className="">
             <img src="https://images.unsplash.com/photo-1543062094-d22540cadf2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" />
@@ -34,6 +35,11 @@ const Home = () => {
             </p>
           </div>
         </Carousel>
+      </div> */}
+
+      {/* banner section */}
+      <div>
+        <Banner></Banner>
       </div>
       {/* slider end */}
       <div className="text-center my-16 text-4xl font-bold tracking-wider">
