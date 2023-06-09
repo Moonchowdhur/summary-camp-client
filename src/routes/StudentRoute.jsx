@@ -3,7 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { Authcontext } from "../provider/Authprovider";
 import useUser from "../hooks/useUser";
 
-const AdminRoute = ({ children }) => {
+const StudentRoute = ({ children }) => {
   const { user, loading } = useContext(Authcontext);
   const [isUser] = useUser();
   const location = useLocation();
@@ -17,11 +17,11 @@ const AdminRoute = ({ children }) => {
     );
   }
 
-  if (user && isUser?.role === "admin") {
+  if (user && isUser?.role === "student") {
     return children;
   }
 
   return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 
-export default AdminRoute;
+export default StudentRoute;

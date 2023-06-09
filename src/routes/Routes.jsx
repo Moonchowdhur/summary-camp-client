@@ -17,6 +17,10 @@ import UpdateClass from "../pages/UpdateClass/UpdateClass";
 import ManageClass from "../pages/ManageClass/ManageClass";
 import PrivateRoute from "./PrivateRoute";
 import PaymentHistory from "../pages/PaymentHistory/PaymentHistory";
+import Payment from "../pages/Payment/Payment";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
+import StudentRoute from "./StudentRoute";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +91,10 @@ const router = createBrowserRouter([
       {
         path: "payment",
         element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: "pay/:id",
+        element: <Payment></Payment>,
       },
       {
         path: "update/:id",

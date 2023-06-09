@@ -3,6 +3,7 @@ import { Authcontext } from "../../provider/Authprovider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import swal from "sweetalert";
+import { Link } from "react-router-dom";
 
 const MySelectedClasses = () => {
   const { user, loading } = useContext(Authcontext);
@@ -90,9 +91,12 @@ const MySelectedClasses = () => {
                   <td> {sclass?.name}</td>
                   <td>${sclass?.price}</td>
                   <th className="flex gap-4  items-center">
-                    <button className="btn text-white bg-orange-500 px-3 py-2">
+                    <Link
+                      to={`/dashboard/pay/${sclass?._id}`}
+                      className="btn text-white bg-orange-500 px-3 py-2"
+                    >
                       Pay
-                    </button>
+                    </Link>
                     <button
                       onClick={() => handleDelBtn(sclass._id)}
                       className="btn text-white bg-[#40128B] px-3 py-2"
