@@ -63,12 +63,14 @@ const Allusers = () => {
 
   return (
     <div className="w-full ">
-      <h2 className="text-3xl font-medium text-center">
-        All users Here:{users.length}
-      </h2>
+      <div className="flex justify-center">
+        <h2 className="text-3xl mx-auto font-medium text-center">
+          All users Here:{users.length}
+        </h2>
+      </div>
       <div>
         <div className="overflow-x-auto md:mx-5 my-5">
-          <table className="table">
+          <table className="table ">
             {/* head */}
             <thead>
               <tr>

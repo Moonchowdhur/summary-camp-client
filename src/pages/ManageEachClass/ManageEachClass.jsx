@@ -110,21 +110,21 @@ const ManageEachClass = ({ eachClass, refetch }) => {
               Price: ${price}
             </p>
           </div>
-          <div className=" flex gap-2 items-center">
-            <p className="rounded-lg my-5 text-sm bg-violet-600 px-3 py-2 text-white font-bold">
+          <div className=" md:flex gap-2 items-center">
+            <p className="rounded-lg my-5  text-sm bg-violet-600 w-2/4 md:w-full px-3 py-2 text-white font-bold">
               Status: {status}
             </p>
             <button
               onClick={() => handleApproveBtn(_id)}
               disabled={status === "pending" ? false : true}
-              className={`btn rounded-lg my-5 text-sm bg-orange-600 px-3 py-2 text-white font-bold `}
+              className={`btn rounded-lg my-5 text-sm  bg-orange-600 px-3 py-2 text-white font-bold `}
             >
               Approved
             </button>
             <button
               onClick={() => handleDenyBtn(_id)}
               disabled={status === "pending" ? false : true}
-              className={`btn rounded-lg my-5 text-sm bg-orange-600 px-3 py-2 text-white font-bold`}
+              className={`btn rounded-lg my-5 mx-2 text-sm bg-orange-600 px-3 py-2 text-white font-bold`}
             >
               Denied
             </button>

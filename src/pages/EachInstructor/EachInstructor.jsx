@@ -6,14 +6,14 @@ const EachInstructor = ({ insructor }) => {
   const { _id, name, email, image } = insructor;
 
   return (
-    <div className="border p-4 shadow-lg rounded-lg flex items-center justify-evenly">
-      <img src={image} alt="" className="h-[300px]  rounded-xl" />
-      <div>
-        <p className="text-2xl flex items-center gap-3 font-medium tracking-wider">
+    <div className="border md:p-4  shadow-lg rounded-lg flex items-center justify-evenly">
+      <img src={image} alt="" className="md:h-[300px] h-[200px]   rounded-xl" />
+      <div className="mx-3">
+        <p className="md:text-2xl text-lg flex items-center gap-3 font-medium tracking-wider">
           <BsFillPeopleFill />
           Name:{name}
         </p>
-        <p className="text-xl flex items-center gap-3 mt-3 font-medium">
+        <p className="md:text-xl text-base  flex items-center gap-3 mt-3 font-medium">
           <AiOutlineMail className="text-2xl" />
           Email:{email}
         </p>

@@ -14,7 +14,7 @@ const ManageClass = () => {
   console.log(allClass);
 
   return (
-    <div className="md:mx-12 gap-5 p-4 grid grid-cols-1 md:grid-cols-2">
+    <div className="md:mx-12 mt-44 md:mt-5 gap-5 p-4 grid grid-cols-1 md:grid-cols-2">
       {allClass.map((eachClass) => (
         <ManageEachClass
           refetch={refetch}

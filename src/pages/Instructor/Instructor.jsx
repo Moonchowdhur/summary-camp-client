@@ -22,7 +22,7 @@ const Instructor = () => {
   //   console.log(allinstructor);
 
   return (
-    <div className="md:mx-12 pb-10  p-4 grid grid-cols-1 md:grid-cols-2 gap-5 ">
+    <div className="md:mx-12 pb-10 mt-40 md:mt-5  p-4 grid grid-cols-1 md:grid-cols-2 gap-5 ">
       {allinstructor.map((insructor) => (
         <EachInstructor
           key={insructor._id}

@@ -8,6 +8,7 @@ import Footer from "../pages/Footer/Footer";
 import { Authcontext } from "../provider/Authprovider";
 import { GiViolin } from "react-icons/gi";
 import { MdPayments } from "react-icons/md";
+import { BiBook } from "react-icons/bi";
 import useUser from "../hooks/useUser";
 const Dashboard = () => {
   const isAdmin = true;
@@ -20,17 +21,17 @@ const Dashboard = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="drawer pb-16 lg:drawer-open">
+      <div className="drawer mt-44 md:mt-3 pb-16 lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
-          {/* Page content here */}
-          <Outlet></Outlet>
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="btn btn-primary drawer-button mx-auto lg:hidden"
           >
             Open drawer
           </label>
+          {/* Page content here */}
+          <Outlet></Outlet>
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -135,8 +136,19 @@ const Dashboard = () => {
                       isActive ? "text-white" : ""
                     }
                   >
-                    <MdPayments />
+                    <BiBook />
                     My Enrolled Classes
+                  </NavLink>
+                </li>
+                <li className="text-black font-medium text-xl mt-5 ">
+                  <NavLink
+                    to="/dashboard/payment"
+                    className={({ isActive, isPending }) =>
+                      isActive ? "text-white" : ""
+                    }
+                  >
+                    <MdPayments />
+                    Payment History
                   </NavLink>
                 </li>
               </div>

@@ -1,12 +1,10 @@
 import React from "react";
 
-const MyEnrolledClasses = () => {
+const PaymentHistory = () => {
   return (
     <div>
       <div className=" my-8">
-        <h2 className="text-center font-bold text-2xl ">
-          Total Enrolled class: 0
-        </h2>
+        <h2 className="text-center font-bold text-2xl ">Total Payment: 0</h2>
       </div>
       <div className="w-full my-5 ">
         <div className="overflow-x-auto">
@@ -14,27 +12,27 @@ const MyEnrolledClasses = () => {
             {/* head */}
             <thead>
               <tr>
-                <th className="bg-[#40128B] text-white text-xl">#</th>
                 <th className="bg-[#40128B] text-white text-xl">Image</th>
-                <th className="bg-[#40128B] text-white text-xl">
-                  Instructor name
-                </th>
+
                 <th className="bg-[#40128B] text-white text-xl">
                   Instructor Email
                 </th>
                 <th className="bg-[#40128B] text-white text-xl">Class Name</th>
 
                 <th className="bg-[#40128B] text-white text-xl">Price</th>
+                <th className="bg-[#40128B] text-white text-xl">
+                  Payment Date
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th>Index</th>
                 <td>image</td>
-                <td>instructorName</td>
+
                 <td>instructorEmail</td>
                 <td> name</td>
                 <td>price</td>
+                <td>Payment Date</td>
               </tr>
             </tbody>
           </table>
@@ -44,4 +42,4 @@ const MyEnrolledClasses = () => {
   );
 };
 
-export default MyEnrolledClasses;
+export default PaymentHistory;

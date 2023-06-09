@@ -12,7 +12,7 @@ import { Authcontext } from "../../provider/Authprovider";
 
 const Login = () => {
   const { signUser, resetPassword, googleSignIn } = useContext(Authcontext);
-  const emailRef = useRef();
+
   const location = useLocation();
   let navigate = useNavigate();
   const [success, setSuccess] = useState("");
@@ -32,23 +32,6 @@ const Login = () => {
         setError("");
         setSuccess("Login Successfull");
         navigate(from, { replace: true });
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        setError(errorMessage);
-        setSuccess("");
-      });
-  };
-
-  const forgetPasswordbtn = (event) => {
-    const email = emailRef.current.value;
-    if (!email) {
-      swal("Please provide your email", "", "warning");
-      return;
-    }
-    resetPassword(email)
-      .then(() => {
-        toast("Please check your email to reset password");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -120,7 +103,6 @@ const Login = () => {
             </label>
             <input
               type="email"
-              ref={emailRef}
               name="email"
               id="email"
               placeholder="Enter Email"
@@ -161,14 +143,6 @@ const Login = () => {
             Sign in
           </button>
         </form>
-        <button onClick={forgetPasswordbtn} className="mt-3">
-          <small>
-            forget password?
-            <span className="text-indigo-700 font-semibold underline ms-2">
-              click here
-            </span>
-          </small>
-        </button>
 
         <div className="relative py-2">
           <div className="absolute inset-0 flex items-center">

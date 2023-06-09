@@ -38,7 +38,7 @@ const Navbar = () => {
         <ul
           className={`md:flex gap-8 z-10 md:bg-transparent text-white  font-bold md:static absolute text-xl items-center  ${
             open
-              ? "top-20 right-7 p-3 bg-[#F9F5F6] text-black"
+              ? "top-20 right-7 p-3 bg-[#C4B0FF] text-black"
               : "-top-48 right-0"
           }`}
         >
@@ -78,16 +78,8 @@ const Navbar = () => {
           </li>
 
           {/* dashboard conditional */}
-          {user & (isUser?.role === "admin") ? (
-            <div>admin</div>
-          ) : user & (isUser?.role === "instructor") ? (
-            <div>admin</div>
-          ) : (
-            <div>student</div>
-          )}
-          {/* dashboard conditional end */}
-          {user ? (
-            <div className="flex items-center text-xl gap-3">
+          {user && isUser?.role === "admin" && (
+            <div>
               <li className="text-xl">
                 <NavLink
                   to="/dashboard/allusers"
@@ -99,6 +91,43 @@ const Navbar = () => {
                   {/* other code */}
                 </NavLink>
               </li>
+            </div>
+          )}
+          {user && isUser?.role === "instructor" && (
+            <div>
+              <li className="text-xl">
+                <NavLink
+                  to="/dashboard/myclass"
+                  className={({ isActive, isPending }) =>
+                    isActive ? " text-[#F7C04A]" : ""
+                  }
+                >
+                  Dashboard
+                  {/* other code */}
+                </NavLink>
+              </li>
+            </div>
+          )}
+          {user && isUser?.role === "student" && (
+            <div>
+              <li className="text-xl">
+                <NavLink
+                  to="/dashboard/selectedclass"
+                  className={({ isActive, isPending }) =>
+                    isActive ? " text-[#F7C04A]" : ""
+                  }
+                >
+                  Dashboard
+                  {/* other code */}
+                </NavLink>
+              </li>
+            </div>
+          )}
+          {/* dashboard conditional end */}
+
+          {/* if user exist */}
+          {user ? (
+            <div className="flex items-center text-xl gap-3">
               <img
                 src={user?.photoURL}
                 className="w-10 h-10 rounded-full"
