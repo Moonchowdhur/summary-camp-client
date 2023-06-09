@@ -6,7 +6,7 @@
 
 # Technology/package name:
 
-- React, Tailwind, MongoDB, ExpressJs, react-icons, NodeJs,sweetalert, TanStack Query, Axios, JWT
+- ReactJs, Tailwind, MongoDB, ExpressJs, react-icons, NodeJs,sweetalert, TanStack Query, Axios, JWT
 
 # Project Details:
 
