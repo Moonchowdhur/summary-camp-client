@@ -3,6 +3,7 @@ import { Outlet, NavLink } from "react-router-dom";
 import Navbar from "../pages/Navbar/Navbar";
 import { FaGuitar, FaUsers } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
+import { MdOutlineClass } from "react-icons/md";
 import Footer from "../pages/Footer/Footer";
 import { Authcontext } from "../provider/Authprovider";
 import { GiViolin } from "react-icons/gi";
@@ -97,7 +98,7 @@ const Dashboard = () => {
                       isActive ? "text-violet-500" : ""
                     }
                   >
-                    <FaUsers />
+                    <MdOutlineClass />
                     My Classes
                   </NavLink>
                 </li>

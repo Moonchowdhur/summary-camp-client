@@ -15,6 +15,7 @@ import MySelectedClasses from "../pages/MySelectedClasses/MySelectedClasses";
 import MyEnrolledClasses from "../pages/MyEnrolledClasses/MyEnrolledClasses";
 import UpdateClass from "../pages/UpdateClass/UpdateClass";
 import ManageClass from "../pages/ManageClass/ManageClass";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,11 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
 
     children: [
       // admin panel

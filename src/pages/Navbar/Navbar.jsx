@@ -10,7 +10,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const [isUser] = useUser();
-  // console.log(isUser);
+  console.log(isUser);
 
   const logoutBtn = () => {
     logOut()
@@ -76,6 +76,16 @@ const Navbar = () => {
               {/* other code */}
             </NavLink>
           </li>
+
+          {/* dashboard conditional */}
+          {user & (isUser?.role === "admin") ? (
+            <div>admin</div>
+          ) : user & (isUser?.role === "instructor") ? (
+            <div>admin</div>
+          ) : (
+            <div>student</div>
+          )}
+          {/* dashboard conditional end */}
           {user ? (
             <div className="flex items-center text-xl gap-3">
               <li className="text-xl">
@@ -120,3 +130,37 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// {user ? (
+//   <div className="flex items-center text-xl gap-3">
+//     <li className="text-xl">
+//       <NavLink
+//         to="/dashboard/allusers"
+//         className={({ isActive, isPending }) =>
+//           isActive ? " text-[#F7C04A]" : ""
+//         }
+//       >
+//         Dashboard
+//         {/* other code */}
+//       </NavLink>
+//     </li>
+//     <img
+//       src={user?.photoURL}
+//       className="w-10 h-10 rounded-full"
+//       alt=""
+//     />
+//     <button onClick={logoutBtn}>Logout</button>
+//   </div>
+// ) : (
+//   <li className="text-xl">
+//     <NavLink
+//       to="/login"
+//       className={({ isActive, isPending }) =>
+//         isActive ? " text-[#F7C04A]" : ""
+//       }
+//     >
+//       Login
+//       {/* other code */}
+//     </NavLink>
+//   </li>
+// )}
