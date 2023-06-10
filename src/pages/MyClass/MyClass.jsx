@@ -64,15 +64,13 @@ const MyClass = () => {
                   <td>{sclass?.instructorEmail}</td>
                   <td> {sclass?.name}</td>
                   <td>
-                    {sclass?.status == "denied"
-                      ? sclass?.feedback
-                      : "No feedback"}
+                    {sclass?.status == "denied" ? sclass?.feedback : "N/A"}
                   </td>
                   <td>${sclass?.price}</td>
                   <td className="bg-orange-400 btn btn-sm font-bold">
                     {sclass?.status}
                   </td>
-                  <td>0</td>
+                  <td className="text-center">{sclass?.enrollstudent}</td>
                   <th className="flex gap-4  items-center">
                     <Link
                       // onClick={() => handleUpdateBtn(sclass)}

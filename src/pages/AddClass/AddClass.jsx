@@ -44,6 +44,7 @@ const AddClass = () => {
           seats: parseFloat(seats),
           status: "pending",
           image,
+          enrollstudent: 0,
         };
         axiosSecure.post("/classes", itemData).then((res) => {
           console.log(res.data);

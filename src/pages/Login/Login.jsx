@@ -20,7 +20,7 @@ const Login = () => {
   const [eye, setEye] = useState(false);
 
   let from = location.state?.from?.pathname || "/";
-
+  console.log(from);
   const handleLoginbtn = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -72,7 +72,16 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center my-7 ">
+    <div className="md:flex mb-20 mt-36 gap-10 items-center justify-center md:mt-7  ">
+      {/* login pic */}
+      <div className="">
+        <img
+          src="https://i.ibb.co/wz7tbnj/Login-rafiki.png"
+          className="w-[500px]"
+          alt=""
+        />
+      </div>
+
       <div className="w-96 p-6 shadow-md bg-white rounded">
         <div className="text-center mb-3 font-bold text-3xl justify-center gap-3 flex items-center">
           <FaUser className="text-fuchsia-700 " />
@@ -105,6 +114,7 @@ const Login = () => {
               type="email"
               name="email"
               id="email"
+              required
               placeholder="Enter Email"
               className="border w-full px-2 focus:outline-none text-base py-1 focus:ring-0 focus:border-gray-600 rounded"
             />
@@ -118,6 +128,7 @@ const Login = () => {
                 type={eye ? "text" : "password"}
                 name="password"
                 id="password"
+                required
                 placeholder="Enter Password"
                 className="border w-full px-2 focus:outline-none text-base py-1 focus:ring-0 focus:border-gray-600 rounded"
               />
@@ -138,7 +149,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="mt-5 font-semibold text-xl border-2 w-full px-3 py-2 rounded-lg border-indigo-700 bg-indigo-700 hover:bg-transparent hover:text-indigo-700 text-white "
+            className="mt-5 font-semibold text-xl border-2 w-full px-3 py-2 rounded-lg border-[#40128B] bg-[#40128B] hover:bg-transparent hover:text-indigo-700 text-white "
           >
             Sign in
           </button>

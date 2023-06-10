@@ -66,39 +66,77 @@ const router = createBrowserRouter([
       // admin panel
       {
         path: "allusers",
-        element: <Allusers></Allusers>,
+        element: (
+          <AdminRoute>
+            <Allusers></Allusers>
+          </AdminRoute>
+        ),
       },
       {
         path: "manageclass",
-        element: <ManageClass></ManageClass>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <ManageClass></ManageClass>
+          </AdminRoute>
+        ),
       },
       {
         path: "addclass",
-        element: <AddClass></AddClass>,
+        element: (
+          <InstructorRoute>
+            <AddClass></AddClass>
+          </InstructorRoute>
+        ),
       },
       {
         path: "myclass",
-        element: <MyClass></MyClass>,
+        element: (
+          <InstructorRoute>
+            {" "}
+            <MyClass></MyClass>
+          </InstructorRoute>
+        ),
       },
       {
         path: "selectedclass",
-        element: <MySelectedClasses></MySelectedClasses>,
+        element: (
+          <StudentRoute>
+            <MySelectedClasses></MySelectedClasses>
+          </StudentRoute>
+        ),
       },
       {
         path: "enrolledclass",
-        element: <MyEnrolledClasses></MyEnrolledClasses>,
+        element: (
+          <StudentRoute>
+            <MyEnrolledClasses></MyEnrolledClasses>
+          </StudentRoute>
+        ),
       },
       {
         path: "payment",
-        element: <PaymentHistory></PaymentHistory>,
+        element: (
+          <StudentRoute>
+            <PaymentHistory></PaymentHistory>
+          </StudentRoute>
+        ),
       },
       {
         path: "pay/:id",
-        element: <Payment></Payment>,
+        element: (
+          <StudentRoute>
+            <Payment></Payment>
+          </StudentRoute>
+        ),
       },
       {
         path: "update/:id",
-        element: <UpdateClass></UpdateClass>,
+        element: (
+          <InstructorRoute>
+            <UpdateClass></UpdateClass>
+          </InstructorRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/classes/${params.id}`),
       },
