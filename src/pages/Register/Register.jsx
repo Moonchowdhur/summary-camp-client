@@ -23,6 +23,8 @@ const Register = () => {
 
   let from = location.state?.from?.pathname || "/";
 
+  // handle register btn
+
   const handleRegisterbtn = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
