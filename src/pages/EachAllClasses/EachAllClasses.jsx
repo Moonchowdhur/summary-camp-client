@@ -108,26 +108,3 @@ const EachAllClasses = ({ c }) => {
 };
 
 export default EachAllClasses;
-
-// const selectedData = {
-//   image,
-//   studentName: user?.displayName,
-//   studentEmail: user?.email,
-//   selectedClassId: _id,
-//   instructorEmail,
-//   instructorName,
-//   name,
-//   price,
-//   seats,
-//   status,
-// };
-
-// axiosSecure.post("/selectedclass", selectedData).then((res) => {
-//   console.log(res.data);
-//   if (res.data.insertedId) {
-//     swal({
-//       title: "Class Selected",
-//       icon: "success",
-//     });
-//   }
-// });

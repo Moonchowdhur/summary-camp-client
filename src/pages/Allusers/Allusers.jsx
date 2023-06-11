@@ -108,9 +108,13 @@ const Allusers = () => {
                       </button>
                     ) : (
                       <button
-                        disabled={user?.role === "admin" || "instructor"}
+                        // disabled={
+                        //   (user?.role === "admin" || "instructor") && "disabled"
+                        // }
                         onClick={() => handleInstBtn(user)}
-                        className={`bg-orange-300 py-2 text-base px-2 rounded-lg text-white disable:cursor-not-allowed cursor-pointer `}
+                        className={`bg-orange-300 py-2 text-base px-2 rounded-lg text-white cursor-pointer ${
+                          user?.role !== "student" && "btn-disabled"
+                        }`}
                       >
                         Make Instructor
                       </button>
@@ -124,9 +128,10 @@ const Allusers = () => {
                       </button>
                     ) : (
                       <button
-                        disabled={user?.role === "admin" || "instructor"}
                         onClick={() => handleAdminBtn(user)}
-                        className="bg-[#40128B] py-2 text-base px-2 rounded-lg text-white  "
+                        className={`bg-[#40128B] py-2 text-base px-2 rounded-lg text-white  ${
+                          user?.role !== "student" && "btn-disabled"
+                        }`}
                       >
                         Make Admin{" "}
                       </button>
