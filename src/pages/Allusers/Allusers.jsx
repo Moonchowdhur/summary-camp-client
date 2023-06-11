@@ -10,7 +10,9 @@ const Allusers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch(
+        "https://assignment-12-project-server.vercel.app/users"
+      );
       return res.json();
       // const res = await axiosSecure.get("/users");
       // return res.data;
@@ -32,9 +34,12 @@ const Allusers = () => {
 
   const handleAdminBtn = (user) => {
     console.log(user._id);
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://assignment-12-project-server.vercel.app/users/admin/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -48,9 +53,12 @@ const Allusers = () => {
   // console.log(user?.role);
   const handleInstBtn = (user) => {
     console.log(user._id);
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://assignment-12-project-server.vercel.app/users/instructor/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

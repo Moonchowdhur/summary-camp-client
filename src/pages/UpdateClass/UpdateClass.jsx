@@ -16,8 +16,8 @@ const UpdateClass = () => {
     const seats = event.target.seats.value;
 
     const updatedData = {
-      price,
-      seats,
+      price: parseFloat(price),
+      seats: parseFloat(seats),
     };
     console.log(updatedData);
     axiosSecure.patch(`/classes/${_id}`, updatedData).then((res) => {

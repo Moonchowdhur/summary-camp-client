@@ -5,11 +5,11 @@ import useUser from "../hooks/useUser";
 
 const StudentRoute = ({ children }) => {
   const { user, loading } = useContext(Authcontext);
-  const [isUser] = useUser();
+  const [isUser, , isLoading] = useUser();
   const location = useLocation();
   console.log(location);
 
-  if (loading) {
+  if (loading || isLoading) {
     return (
       <div className="radial-progress text-primary" style={{ "--value": 70 }}>
         70%

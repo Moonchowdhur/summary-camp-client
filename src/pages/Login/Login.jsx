@@ -52,7 +52,7 @@ const Login = () => {
           role: "student",
         };
         console.log(dataUser);
-        fetch("http://localhost:5000/users", {
+        fetch("https://assignment-12-project-server.vercel.app/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -93,7 +93,11 @@ const Login = () => {
         <hr className="mt-3" />
         <form onSubmit={handleLoginbtn}>
           <div>
-            {error && <p className="text-center mt-4 text-red-500">{error}</p>}
+            {error && (
+              <p className="text-center mt-4 font-bold text-xl text-red-500">
+                Error: {error}
+              </p>
+            )}
           </div>
           <div>
             {success && (

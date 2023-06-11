@@ -41,7 +41,7 @@ const Register = () => {
       setError("Password has to be one special case letter.");
       return;
     } else if (!/.{6}/.test(password)) {
-      setError("Password length must be 6.");
+      setError("Password length must be more than 6.");
       return;
     } else if (confirm !== password) {
       setError("Password don't match");
@@ -68,7 +68,7 @@ const Register = () => {
               role: "student",
             };
             console.log(dataUser);
-            fetch("http://localhost:5000/users", {
+            fetch("https://assignment-12-project-server.vercel.app/users", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -110,7 +110,7 @@ const Register = () => {
           role: "student",
         };
         console.log(dataUser);
-        fetch("http://localhost:5000/users", {
+        fetch("https://assignment-12-project-server.vercel.app/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -143,7 +143,11 @@ const Register = () => {
         <hr className="mt-3" />
         <form onSubmit={handleRegisterbtn}>
           <div>
-            {error && <p className="text-center mt-4 text-red-500">{error}</p>}
+            {error && (
+              <p className="text-center font-bold text-xl mt-4 text-red-500">
+                Error: {error}
+              </p>
+            )}
           </div>
           <div>
             {success && (
@@ -290,7 +294,3 @@ export default Register;
 
 // FGG$%p
 // mima@gmail.com
-
-// [#40128B]
-// disabled={role === "admin" || "instructor"}
-// disabled:cursor-not-allowed

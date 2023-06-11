@@ -54,8 +54,8 @@ const Banner = () => {
                   <span className="  font-bold text-orange-500 ">
                     musical instrument
                   </span>
-                  , all you have to do is touch the right key at the right time
-                  and the instrument will play itself.
+                  , Music produces a kind of pleasure which human nature cannot
+                  do without.
                 </h1>
 
                 <button className="px-3 py-3 rounded-xl text-lg font-bold bg-orange-600 ">
@@ -88,8 +88,8 @@ const Banner = () => {
                   <span className="  font-bold text-orange-500 ">
                     musical instrument
                   </span>
-                  , all you have to do is touch the right key at the right time
-                  and the instrument will play itself.
+                  .The best music is essentially there to provide you something
+                  to face the world with.
                 </h1>
 
                 <button className="px-3 py-3 rounded-xl text-lg font-bold bg-orange-600 ">

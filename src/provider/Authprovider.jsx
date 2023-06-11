@@ -18,7 +18,7 @@ const Authprovider = ({ children }) => {
   const auth = getAuth(app);
   const googleprovider = new GoogleAuthProvider();
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
@@ -51,7 +51,7 @@ const Authprovider = ({ children }) => {
       // axios
       if (currentUser && currentUser?.email) {
         axios
-          .post("http://localhost:5000/jwt", {
+          .post("https://assignment-12-project-server.vercel.app/jwt", {
             email: currentUser.email,
           })
           .then((data) => {

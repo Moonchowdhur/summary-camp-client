@@ -67,7 +67,11 @@ const EachAllClasses = ({ c }) => {
           className="w-[380px] h-[350px] object-cover rounded-lg"
           alt=""
         />
-        <div className={seats === 0 ? "bg-red-600 p-2 rounded-lg" : ""}>
+        <div
+          className={
+            seats === 0 || seats === "0" ? "bg-red-600 p-2 rounded-lg" : ""
+          }
+        >
           <p className="text-2xl tracking-wider font-medium uppercase ">
             {name}
           </p>

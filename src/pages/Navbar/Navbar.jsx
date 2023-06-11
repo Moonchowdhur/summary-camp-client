@@ -4,8 +4,9 @@ import { Authcontext } from "../../provider/Authprovider";
 import { FaHamburger } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import useUser from "../../hooks/useUser";
+import { BsToggle2Off, BsToggleOn } from "react-icons/bs";
 
-const Navbar = () => {
+const Navbar = ({ isDarkMode, onToggle }) => {
   const { user, logOut } = useContext(Authcontext);
   const [open, setOpen] = useState(false);
 
@@ -75,6 +76,18 @@ const Navbar = () => {
               Classes
               {/* other code */}
             </NavLink>
+          </li>
+          <li>
+            <button
+              className="theme-toggle bg-orange-500 px-2 py-2 rounded-full"
+              onClick={onToggle}
+            >
+              {isDarkMode ? (
+                <BsToggle2Off className="text-3xl text-black" />
+              ) : (
+                <BsToggleOn className="text-3xl " />
+              )}
+            </button>
           </li>
 
           {/* dashboard conditional */}

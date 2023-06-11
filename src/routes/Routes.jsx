@@ -138,7 +138,9 @@ const router = createBrowserRouter([
           </InstructorRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/classes/${params.id}`),
+          fetch(
+            `https://assignment-12-project-server.vercel.app/classes/${params.id}`
+          ),
       },
     ],
   },

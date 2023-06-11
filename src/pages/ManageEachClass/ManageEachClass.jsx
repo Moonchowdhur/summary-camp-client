@@ -25,9 +25,12 @@ const ManageEachClass = ({ eachClass, refetch }) => {
   // };
 
   const handleApproveBtn = (id) => {
-    fetch(`http://localhost:5000/class-approved/${id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://assignment-12-project-server.vercel.app/class-approved/${id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -41,9 +44,12 @@ const ManageEachClass = ({ eachClass, refetch }) => {
   };
 
   const handleDenyBtn = (id) => {
-    fetch(`http://localhost:5000/class-denied/${id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://assignment-12-project-server.vercel.app/class-denied/${id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

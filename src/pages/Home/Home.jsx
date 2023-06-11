@@ -8,37 +8,6 @@ import PopularClass from "../PopularClass/PopularClass";
 const Home = () => {
   return (
     <div className="md:mx-12 p-4">
-      {/* slider */}
-      {/* <div className="">
-        <Carousel>
-          <div className="">
-            <img src="https://images.unsplash.com/photo-1543062094-d22540cadf2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" />
-            <div className="flex justify-center ">
-              <p className="legend -mt-9 text-2xl">
-                It's easy to play any musical instrument, all you have to do is
-                touch the right key at the right time and the instrument will
-                play itself.
-              </p>
-            </div>
-          </div>
-          <div>
-            <img src="https://images.unsplash.com/photo-1628199699161-88d65311fd28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" />
-            <p className="legend -mt-9 text-2xl">
-              Music expresses that which cannot be said and on which it is
-              impossible to be silent.
-            </p>
-          </div>
-          <div>
-            <img src="https://images.unsplash.com/photo-1566913485233-a9b2afe13757?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80" />
-            <p className="legend">
-              It's easy to play any musical instrument, all you have to do is
-              touch the right key at the right time and the instrument will play
-              itself.
-            </p>
-          </div>
-        </Carousel>
-      </div> */}
-
       {/* banner section */}
       <div>
         <Banner></Banner>

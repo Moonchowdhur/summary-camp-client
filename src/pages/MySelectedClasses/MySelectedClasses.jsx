@@ -33,9 +33,12 @@ const MySelectedClasses = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/selectedclass/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://assignment-12-project-server.vercel.app/selectedclass/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

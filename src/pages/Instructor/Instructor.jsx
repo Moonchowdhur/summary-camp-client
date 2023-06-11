@@ -9,7 +9,9 @@ const Instructor = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch(
+        "https://assignment-12-project-server.vercel.app/users"
+      );
       return res.json();
       // const res = await axiosSecure.get("/users");
       // return res.data;
